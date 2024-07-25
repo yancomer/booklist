@@ -14,9 +14,8 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    @SuppressWarnings("deprecation")
     public Book getBookById(Long id) {
-        return bookRepository.getById(id);
+        return bookRepository.findById(id).get();
     }
 
     public List<Book> getAllUsers() {
