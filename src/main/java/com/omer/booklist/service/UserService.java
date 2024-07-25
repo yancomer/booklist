@@ -18,9 +18,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    @SuppressWarnings("deprecation")
     public User getUserById(Long id) {
-        return userRepository.getById(id);
+        return userRepository.findById(id).get();
     }
 
     public User saveUser(User user) {

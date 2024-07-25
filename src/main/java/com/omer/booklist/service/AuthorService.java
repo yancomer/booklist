@@ -18,10 +18,10 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
-    @SuppressWarnings("deprecation")
     public Author getAuthorById(Long id){
-        return authorRepository.getById(id);
+        return authorRepository.findById(id).get();
     }
+    
     public Author saveAuthor(Author author) {
         return authorRepository.save(author);
     }
