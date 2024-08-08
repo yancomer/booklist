@@ -18,10 +18,6 @@ public class ReadListService {
     @Autowired
     private ReadListRepository readListRepository;
 
-    public ReadListService(ReadListRepository readListRepository) {
-        this.readListRepository = readListRepository;
-    }
-
     public ReadList createReadList(Long userId, Long bookId, Date startDate, Date endDate, int rate) {
         ReadList readList = new ReadList();
         readList.setId(generateId());
@@ -34,19 +30,6 @@ public class ReadListService {
     }
     private Long generateId() {
         return readListRepository.findAll().size() + 1L;
-    }
-    public Optional<ReadList> updateReadList(Long id, Long userId, Long bookId, Date startDate, Date endDate, int rate) {
-        Optional<ReadList> readListOpt = readListRepository.findById(id);
-        if (readListOpt.isPresent()) {
-            ReadList readList = readListOpt.get();
-            readList.setUserId(userId);
-            readList.setBookId(bookId);
-            readList.setStartDate(startDate);
-            readList.setEndDate(endDate);
-            readList.setRate(rate);
-            return Optional.of(readListRepository.save(readList));
-        }
-        return Optional.empty();
     }
 
     public boolean deleteReadList(Long id) {
