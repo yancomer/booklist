@@ -26,7 +26,7 @@ public class BookController {
 
     @GetMapping
     public List<Book> getAllBooks() {
-        return bookService.getAllUsers();
+        return bookService.getAllBooks();
     }
 
     @GetMapping("/{id}")
